@@ -21,9 +21,6 @@ RSpec.describe Foobara::Generators::CommandGenerator::GenerateCommand do
   end
 
   context "with all options" do
-    let(:homepage_url) { "https://example.com" }
-    let(:license) { "LGPL" }
-
     let(:inputs) do
       {
         command_name: "SomeCommand",
