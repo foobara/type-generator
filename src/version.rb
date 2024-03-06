@@ -1,6 +1,6 @@
 module Foobara
   module Generators
-    module CommandGenerator
+    module TypeGenerator
       VERSION = "0.0.1".freeze
     end
   end

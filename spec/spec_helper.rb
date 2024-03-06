@@ -33,4 +33,4 @@ RSpec.configure do |config|
 end
 
 require "foobara/spec_helpers/all"
-require "foobara/command_generator"
+require "foobara/type_generator"

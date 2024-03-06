@@ -1,14 +1,14 @@
 module Foobara
   module Generators
-    module CommandGenerator
+    module TypeGenerator
       module Generators
-        class CommandGenerator < Foobara::FilesGenerator
+        class TypeGenerator < Foobara::FilesGenerator
           class << self
             def manifest_to_generator_classes(manifest)
               case manifest
-              when CommandConfig
+              when TypeConfig
                 [
-                  Generators::CommandGenerator
+                  Generators::TypeGenerator
                 ]
               else
                 # :nocov:
@@ -19,7 +19,7 @@ module Foobara
           end
 
           def template_path
-            ["src", "command.rb.erb"]
+            ["src", "#{type}.rb.erb"]
           end
 
           def target_path
@@ -27,10 +27,10 @@ module Foobara
 
             file = "#{file}.rb"
 
-            ["src", *path, file]
+            ["src", *path, "types", file]
           end
 
-          alias command_config relevant_manifest
+          alias type_config relevant_manifest
 
           def templates_dir
             "#{__dir__}/../templates"
@@ -39,12 +39,12 @@ module Foobara
           # TODO: promote this up to base project
           def ==(other)
             # :nocov:
-            self.class == other.class && command_config == other.command_config
+            self.class == other.class && type_config == other.type_config
             # :nocov:
           end
 
           def hash
-            command_config.hash
+            type_config.hash
           end
         end
       end

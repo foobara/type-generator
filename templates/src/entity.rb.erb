@@ -1,0 +1,14 @@
+<% module_path[..-2].each do |part| %>
+module <%= part %>
+<% end %>
+
+class <%= module_path.last %> < Foobara::Entity
+  attributes do
+    id :integer
+    first_name, :string, :required
+  end
+
+  primary_key :id
+<% module_path.size.times do %>
+end
+<% end %>
