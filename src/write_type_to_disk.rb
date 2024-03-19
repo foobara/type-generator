@@ -41,7 +41,17 @@ module Foobara
 
         def run_post_generation_tasks
           Dir.chdir output_directory do
+            bundle_install
             rubocop_autocorrect
+          end
+        end
+
+        def bundle_install
+          puts "bundling..."
+          cmd = "bundle install"
+
+          Bundler.with_unbundled_env do
+            run_cmd_and_write_output(cmd, raise_if_fails: false)
           end
         end
 
