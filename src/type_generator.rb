@@ -25,9 +25,13 @@ module Foobara
           def target_path
             *path, file = module_path.map { |part| Util.underscore(part) }
 
+            unless path.last == "types"
+              path << "types"
+            end
+
             file = "#{file}.rb"
 
-            ["src", *path, "types", file]
+            ["src", *path, file]
           end
 
           alias type_config relevant_manifest
