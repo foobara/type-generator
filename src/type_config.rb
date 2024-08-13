@@ -19,7 +19,19 @@ module Foobara
         end
 
         def module_path
-          @module_path ||= [*organization&.split("::"), *domain&.split("::"), *name.split("::")]
+          @module_path ||= domain_path + post_domain_path
+        end
+
+        def domain_path
+          @domain_path ||= [*organization&.split("::"), *domain&.split("::")]
+        end
+
+        def post_domain_path
+          name.split("::")
+        end
+
+        def has_domain?
+          !domain_path.empty?
         end
       end
     end
