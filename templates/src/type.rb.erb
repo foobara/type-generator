@@ -1,9 +1,11 @@
-<% module_path[..-2].each do |part| %>
+<% containing_module_path = module_path[..-2] %>
+
+<% containing_module_path.each do |part| %>
 module <%= part %>
 <% end %>
 
 foobara_register_type :<%= Util.underscore(module_path.last) %>, :string, :downcase
 
-<% module_path.size.times do %>
+<% containing_module_path.size.times do %>
 end
 <% end %>
